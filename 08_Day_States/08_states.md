@@ -39,21 +39,18 @@ State is an object in react which let the component re-render when state data ch
 
 ## How to set a state
 
-We set an initial state inside the constructor or outside the constructor of a class based component. We do not directly change or mutate the state but we use the _setState()_ method to reset to a new state. . As you can see below in the state object we have count with initial value 0. We can access the state object using _this.state_ and the property name. See the example below.
+We createa state varaible using useState hook. We do not directly change or mutate the state variable _count_ but we use the _setCount()_ method to reset to a new state. . As you can see below in the count we have with initial value 0. We can access the state value using variable _count_ . See the example below.
 
 ```js
 // index.js
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState } from 'react'
+import ReactDOM from 'react-dom/client'
 
-class App extends React.Component {
+function App () {
   // declaring state
-  state = {
-    count: 0,
-  }
-  render() {
-    // accessing the state value
-    const count = this.state.count
+  const [count, setCount] = useState(0)
+  return() {
+    // accessing the state value with count
     return (
       <div className='App'>
         <h1>{count} </h1>
@@ -61,8 +58,9 @@ class App extends React.Component {
     )
   }
 }
-const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement)
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+root.render(<App />, rootElement)
 ```
 
 If you run the above code you will see zero on the browser. We can increase or decrease the value the state by changing the value of the state using JavaScript method.
